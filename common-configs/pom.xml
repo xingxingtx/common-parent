@@ -16,6 +16,16 @@
             <groupId>com.wei</groupId>
             <artifactId>common-spring</artifactId>
             <version>1.0.0-wei</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--swagger start-->

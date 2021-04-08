@@ -13,8 +13,12 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddressList;
@@ -161,7 +165,7 @@ public class ExcelUtils<T> {
             }
         } else if (Date.class == fieldType) {
             String value = null;
-            if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+            if (cell.getCellType() == CellType.NUMERIC) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 cell.setCellValue(sdf.format(cell.getNumericCellValue()));
                 value = sdf.format(cell.getNumericCellValue());
@@ -272,27 +276,25 @@ public class ExcelUtils<T> {
                 // 创建列
                 cell = row.createCell(i);
                 // 设置列中写入内容为String类型
-                cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+                cell.setCellType(CellType.STRING);
                 HSSFCellStyle cellStyle = workbook.createCellStyle();
-                cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-                cellStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+                cellStyle.setAlignment(HorizontalAlignment.CENTER);
+                cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
                 if (attr.name().indexOf("注：") >= 0) {
                     HSSFFont font = workbook.createFont();
                     font.setColor(HSSFFont.COLOR_RED);
                     cellStyle.setFont(font);
-                    cellStyle.setFillForegroundColor(HSSFColor.LIGHT_YELLOW.index);
+                    cellStyle.setFillForegroundColor((short) 700);
                     sheet.setColumnWidth(i, 6000);
                 } else {
                     HSSFFont font = workbook.createFont();
-                    // 粗体显示
-                    font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
                     // 选择需要用到的字体格式
                     cellStyle.setFont(font);
-                    cellStyle.setFillForegroundColor(HSSFColor.LIGHT_YELLOW.index);
+                    cellStyle.setFillForegroundColor((short) 43);
                     // 设置列宽
                     sheet.setColumnWidth(i, 3766);
                 }
-                cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+                cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 cellStyle.setWrapText(true);
                 cell.setCellStyle(cellStyle);
                 // 写入列名
@@ -312,8 +314,8 @@ public class ExcelUtils<T> {
             int endNo = Math.min(startNo + sheetSize, list.size());
             // 写入各条记录,每条记录对应excel表中的一行
             HSSFCellStyle cs = workbook.createCellStyle();
-            cs.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-            cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+            cs.setAlignment(HorizontalAlignment.CENTER);
+            cs.setVerticalAlignment(VerticalAlignment.CENTER);
             for (int i = startNo; i < endNo; i++) {
                 row = sheet.createRow(i + 1 - startNo);
                 // 得到导出对象.
@@ -336,10 +338,10 @@ public class ExcelUtils<T> {
                                 }
                                 // 如果可以转成数字则导出为数字类型
                                 BigDecimal bc = new BigDecimal(String.valueOf(field.get(vo)));
-                                cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+                                cell.setCellType(CellType.NUMERIC);
                                 cell.setCellValue(bc.doubleValue());
                             } catch (Exception e) {
-                                cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+                                cell.setCellType(CellType.STRING);
                                 if (vo == null) {
                                     // 如果数据存在就填入,不存在填入空格.
                                     cell.setCellValue("");
