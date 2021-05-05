@@ -71,4 +71,9 @@ public class SuperLotto extends AbstractLottery {
     public List<LotteryAwards> getLotteryAwards() {
         return null;
     }
+
+    @Override
+    protected BigDecimal toExpiry(List<? extends Lottery> lotteries, List<LotteryAwards> awards) {
+        return null;
+    }
 }

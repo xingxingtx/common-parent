@@ -30,7 +30,10 @@ public class DispatcherServletV1 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            doDispatch();
+    }
 
+    private void doDispatch() {
     }
 
     @Override
@@ -44,13 +47,13 @@ public class DispatcherServletV1 extends HttpServlet {
         /**4、完成di*/
         doDi();
         /**5、完handlerMapping映射*/
-        doHandlerMapping();
+        doInitHandlerMapping();
     }
 
     private void doDi() {
     }
 
-    private void doHandlerMapping() {
+    private void doInitHandlerMapping() {
     }
 
     private void doInstance() {

@@ -34,7 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     /**用来配置忽略掉的 URL 地址，一般对于静态文件*/
     @Override
     public void configure(WebSecurity web) throws Exception {
-        authorityAndSecurityService.setWebSecurit(web);
+        authorityAndSecurityService.setWebSecurity(web);
     }
 
 

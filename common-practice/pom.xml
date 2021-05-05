@@ -37,5 +37,12 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.32</version>
         </dependency>
+
+        <!--打印类的布局-->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.10</version>
+        </dependency>
     </dependencies>
 </project>

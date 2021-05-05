@@ -16,6 +16,24 @@ public class CommonProperties {
 
     private AuthenticCommonConfig authentic;
 
+    private GlobalCommonConfig global;
+
+    public AuthenticCommonConfig getAuthentic() {
+        return authentic;
+    }
+
+    public void setAuthentic(AuthenticCommonConfig authentic) {
+        this.authentic = authentic;
+    }
+
+    public GlobalCommonConfig getGlobal() {
+        return global;
+    }
+
+    public void setGlobal(GlobalCommonConfig global) {
+        this.global = global;
+    }
+
     /**权限验证公共配置类*/
     public static class AuthenticCommonConfig{
         /**是否开启spring security 权限验证*/
@@ -50,11 +68,16 @@ public class CommonProperties {
         }
     }
 
-    public AuthenticCommonConfig getAuthentic() {
-        return authentic;
-    }
+    public static class GlobalCommonConfig{
+        /**是否开启异常处理*/
+        private String exception;
 
-    public void setAuthentic(AuthenticCommonConfig authentic) {
-        this.authentic = authentic;
+        public String getException() {
+            return exception;
+        }
+
+        public void setException(String exception) {
+            this.exception = exception;
+        }
     }
 }

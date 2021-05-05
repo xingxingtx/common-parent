@@ -21,6 +21,7 @@ public class PublishLottery {
         UnionLotto lotto = (UnionLotto)LotteryBeanFactory.getBean(UnionLotto.class.getName());
         LotteryVO<LotteryRedAndBlue> vo = lotto.buyLottery(1000);
         List<LotteryRedAndBlue> lottery = vo.getLottery();
+
         Collections.sort(lottery);
         System.out.println(vo);
 

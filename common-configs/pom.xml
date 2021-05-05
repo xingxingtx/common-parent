@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wei</groupId>
-            <artifactId>common-spring</artifactId>
+            <artifactId>common-utils</artifactId>
             <version>1.0.0-wei</version>
             <exclusions>
                 <exclusion>

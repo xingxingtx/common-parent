@@ -13,12 +13,13 @@ import com.wei.utils.lottery.common.exception.LotteryException;
 import com.wei.utils.lottery.common.fsm.AwardsType;
 import com.wei.utils.lottery.common.fsm.LotteryType;
 import com.wei.utils.lottery.common.util.LotteryUtils;
-import com.wei.utils.utils.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,12 +32,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UnionLotto extends AbstractLottery{
 
+    private static final Logger log = LoggerFactory.getLogger(UnionLotto.class);
     /**篮球*/
-    private static Integer[] RED_BALLS = null;
+    private static Integer[] RED_BALLS;
     /**红球*/
-    private static  Integer[] BLUE_BALLS = null;
+    private static  Integer[] BLUE_BALLS;
     /**开奖时间，每周日，周二，周四*/
-    private static  int[] OPEN_AWARD_TIME = null;
+    private static  int[] OPEN_AWARD_TIME;
     /**每次开奖具体时间21:15*/
     private static final String EVERY_TIME = "21:15";
 
@@ -87,7 +89,13 @@ public class UnionLotto extends AbstractLottery{
 
     @Override
     public Lottery winningNumber() {
-        return null;
+        LotteryRedAndBlue blue = new LotteryRedAndBlue();
+        blue.setTypeName(type().getName());
+        blue.setPeriods(getPeriods());
+        blue.setAmount(eachNoteAmount());
+        blue.setRedBalls(LotteryUtils.getRandomNumbers(RED_BALLS, 6));
+        blue.setBlueBalls(LotteryUtils.getRandomNumbers(BLUE_BALLS, 1));
+        return blue;
     }
 
     @Override
@@ -96,7 +104,7 @@ public class UnionLotto extends AbstractLottery{
     }
 
     @Override
-    public LotteryVO buyLottery(int noteNum) {
+    public LotteryVO<LotteryRedAndBlue> buyLottery(int noteNum) {
         if(noteNum  <= 0){
             throw new LotteryException(CodeConstant.LotteryConstant.LOTTERY_BUY_ERROR, "UnionLotto buy exception , note number less than one");
         }
@@ -117,7 +125,7 @@ public class UnionLotto extends AbstractLottery{
     }
 
 
-    public LotteryVO buyLotteryByExclude(int noteNum, LotteryDTO dto) {
+    public LotteryVO<LotteryRedAndBlue> buyLotteryByExclude(int noteNum, LotteryDTO dto) {
         if(noteNum  <= 0){
             throw new LotteryException(CodeConstant.LotteryConstant.LOTTERY_BUY_ERROR, "UnionLotto buy exception , note number less than one");
         }
@@ -199,8 +207,8 @@ public class UnionLotto extends AbstractLottery{
         var1.setAwardsType(AwardsType.FIRST_PRISE);
         LotteryRule first = new LotteryRule();
         first.setOpenTime(EVERY_TIME);
-        first.setFrontNumber(new int[]{6});
-        first.setBackNumber(new int[]{1});
+        first.setFrontNumber(Arrays.asList(6));
+        first.setBackNumber(Arrays.asList(1));
         first.setDescribe("中六红一蓝");
         var1.setRule(first);
         /**二等奖*/
@@ -210,8 +218,8 @@ public class UnionLotto extends AbstractLottery{
         var2.setAwardsType(AwardsType.SECOND_PRISE);
         LotteryRule two = new LotteryRule();
         two.setOpenTime(EVERY_TIME);
-        two.setFrontNumber(new int[]{6});
-        two.setBackNumber(new int[]{0});
+        two.setFrontNumber(Arrays.asList(6));
+        two.setBackNumber(Arrays.asList(0));
         two.setDescribe("中六红");
         var2.setRule(two);
         /**三等奖*/
@@ -221,8 +229,8 @@ public class UnionLotto extends AbstractLottery{
         var3.setAwardsType(AwardsType.THIRD_PRISE);
         LotteryRule third = new LotteryRule();
         third.setOpenTime(EVERY_TIME);
-        third.setFrontNumber(new int[]{5});
-        third.setBackNumber(new int[]{1});
+        third.setFrontNumber(Arrays.asList(5));
+        third.setBackNumber(Arrays.asList(1));
         third.setDescribe("中五红一蓝");
         var3.setRule(third);
         /**四等奖*/
@@ -232,8 +240,8 @@ public class UnionLotto extends AbstractLottery{
         var4.setAwardsType(AwardsType.FOURTH_PRISE);
         LotteryRule four = new LotteryRule();
         four.setOpenTime(EVERY_TIME);
-        four.setFrontNumber(new int[]{4, 5});
-        four.setBackNumber(new int[]{1, 0});
+        four.setFrontNumber(Arrays.asList(4, 5));
+        four.setBackNumber(Arrays.asList(0, 1));
         four.setDescribe("中六红一蓝");
         var4.setRule(four);
         /**五等奖*/
@@ -243,8 +251,8 @@ public class UnionLotto extends AbstractLottery{
         var5.setAwardsType(AwardsType.FIVE_PRISE);
         LotteryRule five = new LotteryRule();
         five.setOpenTime(EVERY_TIME);
-        five.setFrontNumber(new int[]{4, 3});
-        five.setBackNumber(new int[]{0, 1});
+        five.setFrontNumber(Arrays.asList(3, 4));
+        five.setBackNumber(Arrays.asList(0, 1));
         five.setDescribe("中六红一蓝");
         var5.setRule(five);
         /**六等奖*/
@@ -254,8 +262,8 @@ public class UnionLotto extends AbstractLottery{
         var6.setAwardsType(AwardsType.SIX_PRISE);
         LotteryRule six = new LotteryRule();
         six.setOpenTime(EVERY_TIME);
-        six.setFrontNumber(new int[]{2, 1, 0});
-        six.setBackNumber(new int[]{1,1,1});
+        six.setFrontNumber(Arrays.asList(0, 1, 2));
+        six.setBackNumber(Arrays.asList(1, 1, 1));
         six.setDescribe("中一蓝+(一红或二红）");
         var6.setRule(six);
         DEFAULT_LOTTERY_AWARDS.add(var1);
@@ -270,4 +278,22 @@ public class UnionLotto extends AbstractLottery{
         return DEFAULT_LOTTERY_AWARDS;
     }
 
+    @Override
+    public BigDecimal toExpiry(List<? extends Lottery> lotteries, List<LotteryAwards> awards) {
+        /**检查彩票类型*/
+        if(awards.get(0).getLotteryType() != type()){throw new LotteryException("lottery type error");}
+        LotteryRedAndBlue number = (LotteryRedAndBlue)winningNumber();
+        Integer[] oBlue = number.getBlueBalls();
+        Integer[] oRed = number.getRedBalls();
+        for (Lottery lottery : lotteries) {
+            LotteryRedAndBlue redAndBlue = (LotteryRedAndBlue)lottery;
+            Integer[] redBalls = redAndBlue.getRedBalls();
+            Integer[] blueBalls = redAndBlue.getBlueBalls();
+            Integer[] commonRed = LotteryUtils.getCommonNumber(oRed, redBalls);
+            Integer[] commonBlue = LotteryUtils.getCommonNumber(oBlue, blueBalls);
+            
+
+        }
+        return null;
+    }
 }

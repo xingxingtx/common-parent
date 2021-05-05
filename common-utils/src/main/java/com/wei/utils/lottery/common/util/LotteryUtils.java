@@ -36,7 +36,7 @@ public class LotteryUtils {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         String[] dayOfWeeks = getDayOfWeeks(day, days);
         int rellDay = Integer.parseInt(dayOfWeeks[1]);
-        if(day < rellDay){
+        if (day < rellDay) {
             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + (rellDay - day));
         }
         int weeks = calendar.getWeeksInWeekYear();
@@ -73,18 +73,18 @@ public class LotteryUtils {
         String[] dayName = new String[2];
         Arrays.sort(days);
         for (int i = 0; i < days.length; i++) {
-            if(days[days.length - 1] < day){
+            if (days[days.length - 1] < day) {
                 day = days[0];
                 break;
             }
-            if(day < days[i]){
+            if (day < days[i]) {
                 day = days[i];
                 break;
             }
         }
-        if(day == 1){
+        if (day == 1) {
             dayName[1] = "8";
-        }else {
+        } else {
             dayName[1] = String.valueOf(day);
         }
         switch (day) {
@@ -142,6 +142,7 @@ public class LotteryUtils {
 
     /**
      * 去除originBalls集合中包含excludeBalls的元素
+     *
      * @param originBalls
      * @param excludeBalls
      * @return
@@ -159,41 +160,60 @@ public class LotteryUtils {
     /**
      * 冒泡排序
      */
-  public static void sort(Integer[] targrt){
-      int len = targrt.length-1;
-      int temp = 0; // 开辟一个临时空间, 存放交换的中间值
-      int tempPostion = 0;  // 记录最后一次交换的位置
-      // 要遍历的次数
-      for (int i = 0; i < targrt.length-1; i++) {
-          int flag = 1; //设置一个标志位
-          //依次的比较相邻两个数的大小，遍历一次后，把数组中第i小的数放在第i个位置上
-          for (int j = 0; j < len; j++) {
-              // 比较相邻的元素，如果前面的数小于后面的数，交换
-              if (targrt[j] > targrt[j+1]) {
-                  temp = targrt[j+1];
-                  targrt[j+1] = targrt[j];
-                  targrt[j] = temp;
-                  flag = 0;  //发生交换，标志位置0
-                  tempPostion = j;  //记录交换的位置
-              }
-          }
-          len = tempPostion; //把最后一次交换的位置给len，来缩减内循环的次数
-          if (flag == 1) {//如果没有交换过元素，则已经有序
-              return;
-          }
+    public static void sort(Integer[] targrt) {
+        int len = targrt.length - 1;
+        int temp = 0; // 开辟一个临时空间, 存放交换的中间值
+        int tempPostion = 0;  // 记录最后一次交换的位置
+        // 要遍历的次数
+        for (int i = 0; i < targrt.length - 1; i++) {
+            int flag = 1; //设置一个标志位
+            //依次的比较相邻两个数的大小，遍历一次后，把数组中第i小的数放在第i个位置上
+            for (int j = 0; j < len; j++) {
+                // 比较相邻的元素，如果前面的数小于后面的数，交换
+                if (targrt[j] > targrt[j + 1]) {
+                    temp = targrt[j + 1];
+                    targrt[j + 1] = targrt[j];
+                    targrt[j] = temp;
+                    flag = 0;  //发生交换，标志位置0
+                    tempPostion = j;  //记录交换的位置
+                }
+            }
+            len = tempPostion; //把最后一次交换的位置给len，来缩减内循环的次数
+            if (flag == 1) {//如果没有交换过元素，则已经有序
+                return;
+            }
 
-      }
-  }
+        }
+    }
 
-  public static LotteryCount getLotteryCount(Integer[] balls){
-      LotteryCount count = new LotteryCount();
-      if(balls != null && balls.length > 0){
-          for (Integer ball : balls) {
+    public static LotteryCount getLotteryCount(Integer[] balls) {
+        LotteryCount count = new LotteryCount();
+        if (balls != null && balls.length > 0) {
+            for (Integer ball : balls) {
 
-          }
-      }
-      return count;
-  }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * 返回origin和target相同数量
+     * @param origin
+     * @param target
+     * @return
+     */
+    public static Integer[] getCommonNumber(Integer[] origin, Integer[] target) {
+        Set<Integer> ints = new HashSet<>();
+        List<Integer> asList = Arrays.asList(target);
+        List<Integer> list = Arrays.asList(origin);
+        for (Integer integer : asList) {
+            if (list.contains(integer)) {
+                ints.add(integer);
+            }
+        }
+        return ints.toArray(new Integer[]{});
+    }
+
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {
             int nextInt = RandomUtils.nextInt(0, 2);

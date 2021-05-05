@@ -1,5 +1,7 @@
 package com.wei.utils.lottery.common.dto;
 
+import java.util.List;
+
 /**
  * @Describe 彩票制度说明对象
  * @Author wei.peng
@@ -7,9 +9,9 @@ package com.wei.utils.lottery.common.dto;
  */
 public class LotteryRule {
     /**前区需要中奖个数*/
-    private int[] frontNumber;
+    private List<Integer> frontNumber;
     /**后区需要中奖个数*/
-    private int[] backNumber;
+    private List<Integer> backNumber;
     /**制度说明*/
     private String describe;
     /**赔率*/
@@ -17,19 +19,19 @@ public class LotteryRule {
     /**开奖时间*/
     private String openTime;
 
-    public int[] getFrontNumber() {
+    public List<Integer> getFrontNumber() {
         return frontNumber;
     }
 
-    public void setFrontNumber(int[] frontNumber) {
+    public void setFrontNumber(List<Integer> frontNumber) {
         this.frontNumber = frontNumber;
     }
 
-    public int[] getBackNumber() {
+    public List<Integer> getBackNumber() {
         return backNumber;
     }
 
-    public void setBackNumber(int[] backNumber) {
+    public void setBackNumber(List<Integer> backNumber) {
         this.backNumber = backNumber;
     }
 

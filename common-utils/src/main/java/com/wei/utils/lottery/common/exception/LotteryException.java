@@ -16,6 +16,9 @@ public class LotteryException extends RuntimeException{
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
+    public  LotteryException(String errorMessage){
+        this.errorMessage = errorMessage;
+    }
 
     public String getErrorMessage() {
         return errorMessage;

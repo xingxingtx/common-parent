@@ -1,5 +1,6 @@
 package com.wei.utils.lottery.abs;
 
+import com.wei.utils.lottery.common.dto.Lottery;
 import com.wei.utils.lottery.common.dto.LotteryAwards;
 import com.wei.utils.lottery.common.dto.LotteryVO;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public abstract class AbstractLottery implements ILottery {
     public abstract List<LotteryAwards> getLotteryAwards();
 
     @Override
-    public BigDecimal getAward(LotteryVO lotteryVO) {
+    public BigDecimal getAward(LotteryVO lotteryVO){
         if (lotteryVO == null || lotteryVO.getLottery() == null
                 || lotteryVO.getLottery().size() == 0){
             log.warn("no lottery buy, you can not get awards");
@@ -47,7 +48,9 @@ public abstract class AbstractLottery implements ILottery {
             return new BigDecimal(0);
         }
         List lottery = lotteryVO.getLottery();
-
-        return null;
+        return toExpiry(lottery, getLotteryAwards());
     }
+
+    protected abstract BigDecimal toExpiry(List<? extends Lottery> lotteries, List<LotteryAwards> awards);
+
 }

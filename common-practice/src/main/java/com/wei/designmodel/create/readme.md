@@ -1,5 +1,33 @@
 ###创建型设计模式
-#####1.工厂方法（Factory Method）
+#####1.1简单工厂（Simple Factory）
+要点：是指一个工厂对象决定创建出那一种产品类的实例，适用于工厂类负责创建的对象较少的场景。
+    参与者：
+    1.1、抽象接口
+         定义顶层接口规范
+    1.2、具体实例类实现抽象接口
+    1.3、工厂类负责创建具体实现者
+    1.4、源码中应用
+       Calendar类
+       public static Calendar getInstance(TimeZone zone,
+                                              Locale aLocale)
+           {
+               return createCalendar(zone, aLocale);
+           }
+       
+           private static Calendar createCalendar(TimeZone zone,
+                                                  Locale aLocale)
+           {
+               CalendarProvider provider =
+                   LocaleProviderAdapter.getAdapter(CalendarProvider.class, aLocale)
+                                        .getCalendarProvider();
+               if (provider != null) {
+                   try {
+                       return provider.getInstance(zone, aLocale);
+                   } catch (IllegalArgumentException iae) {
+                       // fall back to the default instantiation
+                   }
+               }
+#####1.2工厂方法（Factory Method）
 要点：定义一个创建对象的接口，让子类决定实例化那个类
         参与者：
         1.1、product 
@@ -10,6 +38,8 @@
             声明工厂方法，返回一个product类型对象
         1.4、concreteCreator 
             重新定义工厂方法已返回一个concreteProduct实例
+        1.5、源码中应用
+             ILoggerFactory
 #####2.抽象工厂（AbstractFactory）
 要点：创建相关或依赖对象的家族，而无需明确指定具体类。
         2.1、AbstractFactory

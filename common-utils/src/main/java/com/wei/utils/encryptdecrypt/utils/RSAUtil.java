@@ -30,13 +30,15 @@ import java.util.Date;
  */
 public class RSAUtil extends GMBaseUtil{
 
+    public static final String ALGORITHM = "RSA";
+
     /**
-     * 随机生成密钥对
+     * 随机生成RSA密钥对
      * @throws NoSuchAlgorithmException
      */
     public static KeyEntity genRSAKeyPair(int keySize) throws NoSuchAlgorithmException {
         // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
-        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(ALGORITHM);
         // 初始化密钥对生成器，密钥大小为96-1024位
         keyPairGen.initialize(keySize == 0 ? 1024 : keySize,new SecureRandom());
         // 生成一个密钥对，保存在keyPair中
