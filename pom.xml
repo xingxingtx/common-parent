@@ -43,6 +43,7 @@
         <module>common-configs</module>
         <module>common-practice</module>
         <module>common-springcloud</module>
+        <module>common-arithmetic</module>
     </modules>
     <dependencyManagement>
         <dependencies>
