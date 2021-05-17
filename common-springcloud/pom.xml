@@ -5,7 +5,7 @@
     <parent>
         <artifactId>common-parent</artifactId>
         <groupId>com.wei</groupId>
-        <version>1.0.0-wei</version>
+        <version>1.2.0-wei</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
 
     <properties>
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <common-spring.version>1.0.0-wei</common-spring.version>
+        <common-spring.version>1.2.0-wei</common-spring.version>
         <spring-cloud-common.version>1.4.7.RELEASE</spring-cloud-common.version>
     </properties>
     <dependencies>

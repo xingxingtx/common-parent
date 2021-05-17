@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.wei</groupId>
         <artifactId>common-parent</artifactId>
-        <version>1.0.0-wei</version>
+        <version>1.2.0-wei</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wei</groupId>
@@ -14,8 +14,14 @@
     <dependencies>
         <dependency>
             <groupId>com.wei</groupId>
+            <artifactId>common-spring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wei</groupId>
             <artifactId>common-utils</artifactId>
-            <version>1.0.0-wei</version>
+            <version>1.2.0-wei</version>
             <exclusions>
                 <exclusion>
                     <artifactId>guava</artifactId>
@@ -37,6 +43,44 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.bytebuddy</groupId>
+                    <artifactId>byte-buddy</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-expression</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

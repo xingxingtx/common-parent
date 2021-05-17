@@ -5,12 +5,19 @@
     <parent>
         <artifactId>common-parent</artifactId>
         <groupId>com.wei</groupId>
+        <relativePath>../pom.xml</relativePath>
         <version>1.2.0-wei</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wei</groupId>
-    <artifactId>common-dbs</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>achieve-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.2.0-wei</version>
+
+    <modules>
+        <module>achieve-arithmetic</module>
+        <module>achieve-summary</module>
+    </modules>
 
 </project>
