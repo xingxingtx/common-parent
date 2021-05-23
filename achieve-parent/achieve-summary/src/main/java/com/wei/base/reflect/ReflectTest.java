@@ -1,7 +1,5 @@
 package com.wei.base.reflect;
 
-import org.springframework.util.StringUtils;
-
 /**
  * @Describe
  * @Author wei.peng

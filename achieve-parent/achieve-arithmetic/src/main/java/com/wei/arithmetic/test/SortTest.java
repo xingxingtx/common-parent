@@ -8,7 +8,7 @@ import com.wei.arithmetic.sort.Sort;
  * @Author wei.peng
  * @Date 2021年05月05日
  */
-public class SortTest {
+public class SortTest implements Comparable{
     public static void main(String[] args) {
         int[] arr = new int[] { 5, 3, 6, 2, 10, 2, 1, 3, 5, 8, 10 , 16, 4};
         //测试选择排序
@@ -22,7 +22,16 @@ public class SortTest {
         //插入排序
        /* sort = new InsertSort();
         sort.sort(arr, 1);*/
+       getT(new SortTest[]{new SortTest()});
     }
 
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    public static <T extends Comparable> T[] getT(T[] t){
+        return t;
+    }
 }

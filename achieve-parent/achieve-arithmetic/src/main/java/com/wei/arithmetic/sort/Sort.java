@@ -8,11 +8,17 @@ package com.wei.arithmetic.sort;
 public interface Sort {
 
     /**
-     * 排序给int数组排序
+     * 排序int数组
      * @param array 排序数组
      * @param order -1 降序，其余升序
      */
      public int[] sort(int[] array, int order);
 
+    /**
+     * 排序对象数组
+     * @param array 排序数组
+     * @param order -1 降序，其余升序
+     */
+    public <T extends Comparable> T[] sort(T[] array, int order);
 
 }

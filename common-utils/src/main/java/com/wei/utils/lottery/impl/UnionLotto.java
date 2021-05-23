@@ -2,7 +2,6 @@ package com.wei.utils.lottery.impl;
 
 import com.wei.utils.constant.CodeConstant;
 import com.wei.utils.generate.StringUtils;
-import com.wei.utils.lottery.abs.AbstractLottery;
 import com.wei.utils.lottery.common.dto.Lottery;
 import com.wei.utils.lottery.common.dto.LotteryAwards;
 import com.wei.utils.lottery.common.dto.LotteryDTO;
@@ -13,6 +12,7 @@ import com.wei.utils.lottery.common.exception.LotteryException;
 import com.wei.utils.lottery.common.fsm.AwardsType;
 import com.wei.utils.lottery.common.fsm.LotteryType;
 import com.wei.utils.lottery.common.util.LotteryUtils;
+import com.wei.utils.lottery.abs.AbstractLottery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

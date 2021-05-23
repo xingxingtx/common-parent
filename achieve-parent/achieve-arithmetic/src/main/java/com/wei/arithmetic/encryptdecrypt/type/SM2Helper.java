@@ -3,7 +3,7 @@ package com.wei.arithmetic.encryptdecrypt.type;
 
 import com.wei.arithmetic.encryptdecrypt.entity.MessageEntity;
 import com.wei.arithmetic.encryptdecrypt.type.abs.AbstractEncryptAndDecrypt;
-import com.wei.exception.EncryptOrDecryptException;
+import com.wei.base.exception.EncryptOrDecryptException;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.crypto.params.ECDomainParameters;

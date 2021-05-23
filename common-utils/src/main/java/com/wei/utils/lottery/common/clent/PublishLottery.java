@@ -1,11 +1,9 @@
 package com.wei.utils.lottery.common.clent;
 
-import com.wei.utils.lottery.common.dto.LotteryRedAndBlue;
 import com.wei.utils.lottery.common.dto.LotteryVO;
 import com.wei.utils.lottery.common.factory.LotteryBeanFactory;
-import com.wei.utils.lottery.common.fsm.AwardsType;
+import com.wei.utils.lottery.common.dto.LotteryRedAndBlue;
 import com.wei.utils.lottery.impl.UnionLotto;
-import com.wei.utils.lottery.impl.WelfareLotto3d;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.List;
 public class PublishLottery {
 
     public static void main(String[] args) {
-        UnionLotto lotto = (UnionLotto)LotteryBeanFactory.getBean(UnionLotto.class.getName());
+        UnionLotto lotto = (UnionLotto) LotteryBeanFactory.getBean(UnionLotto.class.getName());
         LotteryVO<LotteryRedAndBlue> vo = lotto.buyLottery(1000);
         List<LotteryRedAndBlue> lottery = vo.getLottery();
 

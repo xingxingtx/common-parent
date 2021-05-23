@@ -39,6 +39,7 @@
         <fastjson.version>1.2.75</fastjson.version>
         <org.slf4J.version>1.7.26</org.slf4J.version>
         <spring-common.version>5.2.6.RELEASE</spring-common.version>
+        <commons-codec.version>1.15</commons-codec.version>
     </properties>
 
     <modules>

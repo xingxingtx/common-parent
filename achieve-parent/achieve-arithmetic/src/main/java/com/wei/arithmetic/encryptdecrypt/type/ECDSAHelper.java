@@ -4,7 +4,7 @@ package com.wei.arithmetic.encryptdecrypt.type;
 import com.wei.arithmetic.encryptdecrypt.entity.MessageEntity;
 import com.wei.arithmetic.encryptdecrypt.gm.ECIESwithAESCBCCipher;
 import com.wei.arithmetic.encryptdecrypt.type.abs.AbstractEncryptAndDecrypt;
-import com.wei.exception.EncryptOrDecryptException;
+import com.wei.base.exception.EncryptOrDecryptException;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.crypto.agreement.ECDHBasicAgreement;
 import org.bouncycastle.crypto.engines.AESEngine;

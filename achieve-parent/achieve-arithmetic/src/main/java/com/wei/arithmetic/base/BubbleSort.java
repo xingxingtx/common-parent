@@ -64,5 +64,9 @@ public class BubbleSort extends AbstractSort {
         return array;
     }
 
+    @Override
+    public <T extends Comparable> T[] sort(T[] array, int order) {
+        return null;
+    }
 
 }

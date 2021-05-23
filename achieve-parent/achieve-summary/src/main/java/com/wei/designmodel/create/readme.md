@@ -7,26 +7,13 @@
     1.2、具体实例类实现抽象接口
     1.3、工厂类负责创建具体实现者
     1.4、源码中应用
-       Calendar类
+       1)Calendar类
        public static Calendar getInstance(TimeZone zone,
                                               Locale aLocale)
            {
                return createCalendar(zone, aLocale);
            }
-       
-           private static Calendar createCalendar(TimeZone zone,
-                                                  Locale aLocale)
-           {
-               CalendarProvider provider =
-                   LocaleProviderAdapter.getAdapter(CalendarProvider.class, aLocale)
-                                        .getCalendarProvider();
-               if (provider != null) {
-                   try {
-                       return provider.getInstance(zone, aLocale);
-                   } catch (IllegalArgumentException iae) {
-                       // fall back to the default instantiation
-                   }
-               }
+        2)LoggerFactory.getLogger(class);          
 #####1.2工厂方法（Factory Method）
 要点：定义一个创建对象的接口，让子类决定实例化那个类
         参与者：

@@ -1,7 +1,5 @@
 package com.wei.utils.lottery.common.dto;
 
-import cn.hutool.json.JSONUtil;
-
 import java.math.BigDecimal;
 import java.util.List;
 

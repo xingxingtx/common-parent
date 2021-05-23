@@ -19,13 +19,11 @@
             <artifactId>common-spring</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.wei</groupId>
-            <artifactId>common-base</artifactId>
+            <artifactId>achieve-arithmetic</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <!-- 导出excel start-->
         <dependency>
             <groupId>org.apache.poi</groupId>

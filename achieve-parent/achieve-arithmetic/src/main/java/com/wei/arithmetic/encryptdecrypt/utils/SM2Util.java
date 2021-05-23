@@ -1,6 +1,6 @@
 package com.wei.arithmetic.encryptdecrypt.utils;
 
-import com.wei.exception.X509CertificateException;
+import com.wei.base.exception.X509CertificateException;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.math.ec.ECPoint;

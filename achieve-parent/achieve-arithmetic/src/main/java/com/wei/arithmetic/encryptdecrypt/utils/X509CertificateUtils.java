@@ -1,6 +1,6 @@
 package com.wei.arithmetic.encryptdecrypt.utils;
 
-import com.wei.exception.X509CertificateException;
+import com.wei.base.exception.X509CertificateException;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

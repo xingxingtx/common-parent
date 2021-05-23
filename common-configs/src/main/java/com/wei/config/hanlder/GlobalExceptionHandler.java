@@ -1,6 +1,6 @@
 package com.wei.config.hanlder;
 
-import com.wei.exception.BizException;
+import com.wei.base.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

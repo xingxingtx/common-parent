@@ -1,10 +1,7 @@
 package com.wei.utils.lottery.common.dto;
 
 import cn.hutool.json.JSONUtil;
-import com.wei.utils.lottery.impl.UnionLotto;
 import com.wei.utils.utils.SortUtil;
-
-import java.util.Arrays;
 
 /**
  * @Describe LotteryDto

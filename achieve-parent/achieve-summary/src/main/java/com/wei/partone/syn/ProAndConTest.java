@@ -1,7 +1,5 @@
 package com.wei.partone.syn;
 
-import org.springframework.security.core.parameters.P;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

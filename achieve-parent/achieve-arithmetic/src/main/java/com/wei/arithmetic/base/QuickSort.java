@@ -23,6 +23,12 @@ public class QuickSort extends AbstractSort {
         return array;
     }
 
+    @Override
+    public <T extends Comparable> T[] sort(T[] array, int order) {
+        return null;
+    }
+
+
 
     private static int partition(int[] arr, int left, int right) {
         int temp = arr[left];

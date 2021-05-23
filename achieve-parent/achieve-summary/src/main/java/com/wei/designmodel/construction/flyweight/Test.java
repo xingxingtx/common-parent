@@ -1,7 +1,7 @@
 package com.wei.designmodel.construction.flyweight;
 
-import com.wei.designmodel.construction.flyweight.general.FlyweightFactory;
 import com.wei.designmodel.construction.flyweight.general.IFlyweight;
+import com.wei.designmodel.construction.flyweight.general.FlyweightFactory;
 
 /**
  * @Describe Test
