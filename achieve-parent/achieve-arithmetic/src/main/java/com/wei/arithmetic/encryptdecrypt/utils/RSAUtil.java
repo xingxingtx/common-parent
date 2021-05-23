@@ -2,7 +2,7 @@ package com.wei.arithmetic.encryptdecrypt.utils;
 
 import com.wei.arithmetic.encryptdecrypt.entity.CertEntity;
 import com.wei.arithmetic.encryptdecrypt.entity.CertReturnEntity;
-import com.wei.arithmetic.encryptdecrypt.entity.KeyEntity;
+import com.wei.arithmetic.encryptdecrypt.entity.RSAKeyEntity;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.asn1.misc.MiscObjectIdentifiers;
@@ -41,7 +41,7 @@ public class RSAUtil extends GMBaseUtil{
      * 随机生成RSA密钥对
      * @throws NoSuchAlgorithmException
      */
-    public static KeyEntity genRSAKeyPair(int keySize) throws NoSuchAlgorithmException {
+    public static RSAKeyEntity genRSAKeyPair(int keySize) throws NoSuchAlgorithmException {
         // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(ALGORITHM);
         // 初始化密钥对生成器，密钥大小为96-1024位
@@ -52,14 +52,14 @@ public class RSAUtil extends GMBaseUtil{
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
         /**得到公钥*/
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-        KeyEntity entity = new KeyEntity();
+        RSAKeyEntity entity = new RSAKeyEntity();
         entity.setPrivateKey(privateKey);
         entity.setPublicKey(publicKey);
         return entity;
     }
 
 
-    public static CertReturnEntity generatorCert(CertEntity entity, X509Certificate x509Certificate, KeyEntity keyE) throws Exception {
+    public static CertReturnEntity generatorCert(CertEntity entity, X509Certificate x509Certificate, RSAKeyEntity keyE) throws Exception {
         CertReturnEntity cert = new CertReturnEntity();
         X500NameBuilder builder = new X500NameBuilder();
         builder.addRDN(BCStyle.C, entity.getCountyCode())
@@ -69,7 +69,7 @@ public class RSAUtil extends GMBaseUtil{
         if(StringUtils.isNoneBlank(entity.getEmail())){
             builder.addRDN(BCStyle.EmailAddress, entity.getEmail());
         }
-        KeyEntity keyEntity = genRSAKeyPair(2048);
+        RSAKeyEntity keyEntity = genRSAKeyPair(2048);
         PrivateKey privateKey = keyEntity.getPrivateKey();
         PublicKey publicKey = keyEntity.getPublicKey();
         X509v3CertificateBuilder v3CertificateBuilder = new JcaX509v3CertificateBuilder(

@@ -1,6 +1,6 @@
 package com.wei.arithmetic.encryptdecrypt.utils;
 
-import com.wei.arithmetic.encryptdecrypt.entity.KeyEntity;
+import com.wei.arithmetic.encryptdecrypt.entity.RSAKeyEntity;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,8 @@ public class AESUtils {
     public AESUtils() {
     }
 
-    public static KeyEntity createASEKeys() {
-        KeyEntity key = new KeyEntity();
+    public static RSAKeyEntity createASEKeys() {
+        RSAKeyEntity key = new RSAKeyEntity();
 
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("AES");
@@ -40,7 +40,7 @@ public class AESUtils {
         return key;
     }
 
-    public static byte[] encryptionByAES(KeyEntity key, String data) {
+    public static byte[] encryptionByAES(RSAKeyEntity key, String data) {
         SecretKeySpec secretKey = new SecretKeySpec(key.getSecretKey().getEncoded(), "AES");
 
         try {
@@ -55,7 +55,7 @@ public class AESUtils {
         }
     }
 
-    public static byte[] decryptionByAES(KeyEntity key, byte[] data) {
+    public static byte[] decryptionByAES(RSAKeyEntity key, byte[] data) {
         SecretKeySpec secretKey = new SecretKeySpec(key.getSecretKey().getEncoded(), "AES");
 
         try {

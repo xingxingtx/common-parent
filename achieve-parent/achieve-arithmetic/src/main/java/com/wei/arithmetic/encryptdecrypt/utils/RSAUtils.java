@@ -1,6 +1,6 @@
 package com.wei.arithmetic.encryptdecrypt.utils;
 
-import com.wei.arithmetic.encryptdecrypt.entity.KeyEntity;
+import com.wei.arithmetic.encryptdecrypt.entity.RSAKeyEntity;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1Primitive;
@@ -38,7 +38,7 @@ public class RSAUtils {
     public RSAUtils() {
     }
 
-    public static KeyEntity createRSAKeys() {
+    public static RSAKeyEntity createRSAKeys() {
         Security.addProvider(new BouncyCastleProvider());
         KeyPairGenerator keyPairGen = null;
 
@@ -52,7 +52,7 @@ public class RSAUtils {
         KeyPair keyPair = keyPairGen.generateKeyPair();
         RSAPrivateKey privateKey = (RSAPrivateKey)keyPair.getPrivate();
         RSAPublicKey publicKey = (RSAPublicKey)keyPair.getPublic();
-        KeyEntity keys = new KeyEntity();
+        RSAKeyEntity keys = new RSAKeyEntity();
         keys.setPrivateKey(privateKey);
         keys.setPublicKey(publicKey);
         return keys;

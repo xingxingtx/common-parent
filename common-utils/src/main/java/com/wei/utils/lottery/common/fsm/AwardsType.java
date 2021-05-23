@@ -1,6 +1,6 @@
 package com.wei.utils.lottery.common.fsm;
 
-import com.wei.utils.generate.StringUtils;
+import com.wei.utils.utils.StringUtil;
 
 /**
  * @Describe
@@ -35,7 +35,7 @@ public enum AwardsType {
 
 
     public static String getDescByKey(String key){
-        if (StringUtils.isEmpty(key, true)){
+        if (StringUtil.isEmpty(key, true)){
             return NOT_THE_WINNING.getDesc();
         }
         final AwardsType awardsType;

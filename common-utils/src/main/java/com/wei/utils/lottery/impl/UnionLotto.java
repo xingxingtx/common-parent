@@ -1,7 +1,7 @@
 package com.wei.utils.lottery.impl;
 
 import com.wei.utils.constant.CodeConstant;
-import com.wei.utils.generate.StringUtils;
+import com.wei.utils.utils.StringUtil;
 import com.wei.utils.lottery.common.dto.Lottery;
 import com.wei.utils.lottery.common.dto.LotteryAwards;
 import com.wei.utils.lottery.common.dto.LotteryDTO;
@@ -73,7 +73,7 @@ public class UnionLotto extends AbstractLottery{
     @Override
     public String getPeriods() {
         String key = getKey();
-        if (StringUtils.isEmpty(map.get(key), false)){
+        if (StringUtil.isEmpty(map.get(key), false)){
             map.clear();
             final String  period = LotteryUtils.generatePeriods(OPEN_AWARD_TIME);
             map.put(key, period);

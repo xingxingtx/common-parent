@@ -1,7 +1,7 @@
 package com.wei.utils.excel;
 
 import com.wei.utils.annotation.Excel;
-import com.wei.utils.generate.StringUtils;
+import com.wei.utils.utils.StringUtil;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -91,7 +91,7 @@ public class ExcelUtils<T> {
         }
         for (int index = 0; index < sheets; index++) {
             Sheet sheet = null;
-            if (StringUtils.isEmpty(sheetName, false)) {
+            if (StringUtil.isEmpty(sheetName, false)) {
                 sheet = workbook.getSheetAt(index);
             } else {
                 /**获取固定sheetName 数据*/
@@ -163,7 +163,7 @@ public class ExcelUtils<T> {
             }
         } else if (Date.class == fieldType) {
             String value = null;
-            if (cell.getCellType() == CellType.NUMERIC) {
+            if (cell.getCellTypeEnum() == CellType.NUMERIC) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 cell.setCellValue(sdf.format(cell.getNumericCellValue()));
                 value = sdf.format(cell.getNumericCellValue());
@@ -298,7 +298,7 @@ public class ExcelUtils<T> {
                 // 写入列名
                 cell.setCellValue(attr.name());
                 // 如果设置了提示信息则鼠标放上去提示.
-                if (!StringUtils.isEmpty(attr.prompt(), false)) {
+                if (!StringUtil.isEmpty(attr.prompt(), false)) {
                     // 这里默认设了2-101列提示.
                     setHSSFPrompt(sheet, "", attr.prompt(), 1, 100, i, i);
                 }
