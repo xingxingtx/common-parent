@@ -14,7 +14,6 @@ import java.io.File;
  * @Date 2021年05月23日
  */
 public class RootIssuerMker {
-
     private static final Logger log = LoggerFactory.getLogger(RootIssuerMker.class);
 
     public RootIssuerMker() {
@@ -33,7 +32,7 @@ public class RootIssuerMker {
         }
 
         try {
-            (new GenerateRootIssuer(folder)).createAcIssuerCert();
+            new GenerateRootIssuer(folder).createAcIssuerCert();
             log.info("root ca certificate genertated, pleas check under:{}", folder);
         } catch (Exception var4) {
             log.error(var4.getMessage(), var4);

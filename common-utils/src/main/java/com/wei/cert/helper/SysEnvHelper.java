@@ -23,7 +23,7 @@ public class SysEnvHelper {
 
     public static void envCheckgenerated() {
         String generatedCaPath = SystemConfigHelper.getProperty("hbcc.tools.cert.root");
-        if (StringUtil.isEmpty(generatedCaPath, true)) {
+        if (StringUtil.isEmpty(generatedCaPath)) {
             log.error("hbcc.tools.cert.root can not be empty");
             System.exit(0);
         }

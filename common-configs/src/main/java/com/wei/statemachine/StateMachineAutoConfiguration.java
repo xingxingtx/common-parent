@@ -1,6 +1,6 @@
 package com.wei.statemachine;
 
-import com.wei.properties.StateMachineProperties;
+import com.wei.statemachine.properties.StateMachineProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

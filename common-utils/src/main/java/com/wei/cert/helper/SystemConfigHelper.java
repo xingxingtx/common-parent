@@ -19,14 +19,14 @@ import java.util.Properties;
 public class SystemConfigHelper {
     private static final Logger log = LoggerFactory.getLogger(SystemConfigHelper.class);
     private static Properties configProperties = null;
-    private static final String PROPS_FILE_NAME = "cert.properties";
+    private static final String PROPS_FILE_NAME = "config/cert.properties";
     private static final String OURTER_CONFIG_PATH = "root.dir";
 
     public SystemConfigHelper() {
     }
 
     private static String getLocalPath() {
-        String rootdir = System.getProperty("root.dir");
+        String rootdir = System.getProperty(OURTER_CONFIG_PATH);
         if (rootdir == null || "".equals(rootdir) || "null".equals(rootdir)) {
             rootdir = "";
         }
@@ -42,7 +42,7 @@ public class SystemConfigHelper {
 
         try {
             log.debug("loadConfig() starts.");
-            innerIs = SystemConfigHelper.class.getClassLoader().getResourceAsStream("cert.properties");
+            innerIs = SystemConfigHelper.class.getClassLoader().getResourceAsStream(PROPS_FILE_NAME);
             if (innerIs == null) {
                 empty = true;
             } else {
@@ -52,7 +52,7 @@ public class SystemConfigHelper {
 
             String ourterConfig = getLocalPath();
             if (!StringUtil.isEmpty(ourterConfig)) {
-                File f = new File(ourterConfig, "cert.properties");
+                File f = new File(ourterConfig, PROPS_FILE_NAME);
 
                 try {
                     outerIs = new FileInputStream(f);
