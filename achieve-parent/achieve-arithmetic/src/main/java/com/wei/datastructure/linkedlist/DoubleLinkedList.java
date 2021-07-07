@@ -1,4 +1,4 @@
-package com.wei.arithmetic.linkedlist;
+package com.wei.datastructure.linkedlist;
 
 import java.util.NoSuchElementException;
 
@@ -54,7 +54,7 @@ public class DoubleLinkedList<E> {
         size++;
     }
 
-    private class Node<E> {
+    static class Node<E> {
          E data;
          Node<E> pre;
          Node<E> next;

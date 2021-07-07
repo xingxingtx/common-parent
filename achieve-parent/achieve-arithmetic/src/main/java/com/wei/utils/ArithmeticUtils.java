@@ -1,6 +1,8 @@
-package com.wei.arithmetic.until;
+package com.wei.utils;
 
 import com.alibaba.fastjson.JSON;
+
+import java.util.Random;
 
 /**
  * @Describe
@@ -42,9 +44,39 @@ public class ArithmeticUtils {
         return preArray;
     }
 
+    /**
+     * 获取固定大小范围内指定长度的随机数组
+     * @param length
+     */
+    public static int[] getRandomIntArrays(int length, int start, int end){
+        if(length <= 0 || start >= end){
+            return new int[]{};
+        }
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = start + new Random().nextInt(end);
+        }
+        return array;
+    }
+
+    /**
+     * 获取固定大小范围内指定长度的随机数组
+     * @param length
+     */
+    public static Integer[] getRandomIntegerArray(int length, int start, int end){
+        if(length <= 0 || start >= end){
+            return new Integer[]{};
+        }
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = start + new Random().nextInt(end);
+        }
+        return array;
+    }
+
     public static void main(String[] args) {
-        int[] array = new int[]{3,9,3,9,4,3};
-        System.out.println(JSON.toJSON(prefixIntervalsSum(array)));
+        Integer[] array = getRandomIntegerArray(12, 1, 100);
+        System.out.println(JSON.toJSON(array));
     }
 
 }

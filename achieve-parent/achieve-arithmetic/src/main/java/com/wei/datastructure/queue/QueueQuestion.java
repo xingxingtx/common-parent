@@ -1,4 +1,4 @@
-package com.wei.arithmetic.queue;
+package com.wei.datastructure.queue;
 
 import java.util.ArrayList;
 import java.util.List;

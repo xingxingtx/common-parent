@@ -1,8 +1,8 @@
-package com.wei.arithmetic.stack;
+package com.wei.datastructure.stack;
 
 
 
-import com.wei.arithmetic.until.ArithmeticUtils;
+import com.wei.utils.ArithmeticUtils;
 
 import java.util.Stack;
 

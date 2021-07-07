@@ -1,4 +1,4 @@
-package com.wei.arithmetic.linkedlist;
+package com.wei.datastructure.linkedlist;
 
 /**
  * @Describe

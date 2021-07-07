@@ -2,6 +2,8 @@ package com.wei.arithmetic.base;
 
 import com.wei.arithmetic.sort.abs.AbstractSort;
 
+import java.util.Comparator;
+
 /**
  * @Describe
  * @Author wei.peng
@@ -63,4 +65,8 @@ public class QuickSort extends AbstractSort {
         quickSort(arr, mid + 1, right);
     }
 
+    @Override
+    public <T> T[] sort(T[] array, int order, Comparator<T> comparator) {
+        return null;
+    }
 }

@@ -2,6 +2,8 @@ package com.wei.arithmetic.base;
 
 import com.wei.arithmetic.sort.abs.AbstractSort;
 
+import java.util.Comparator;
+
 /**
  * @Describe 希尔排序
  * @Author wei.peng
@@ -21,4 +23,8 @@ public class ShellSort extends AbstractSort{
         return null;
     }
 
+    @Override
+    public <T> T[] sort(T[] array, int order, Comparator<T> comparator) {
+        return null;
+    }
 }

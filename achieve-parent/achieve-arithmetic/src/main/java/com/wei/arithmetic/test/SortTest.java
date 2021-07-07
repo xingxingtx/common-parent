@@ -1,7 +1,11 @@
 package com.wei.arithmetic.test;
 
+import com.alibaba.fastjson.JSON;
 import com.wei.arithmetic.base.SelectSort;
 import com.wei.arithmetic.sort.Sort;
+import com.wei.utils.ArithmeticUtils;
+
+import java.util.Comparator;
 
 /**
  * @Describe
@@ -10,12 +14,14 @@ import com.wei.arithmetic.sort.Sort;
  */
 public class SortTest implements Comparable{
     public static void main(String[] args) {
-        int[] arr = new int[] { 5, 3, 6, 2, 10, 2, 1, 3, 5, 8, 10 , 16, 4};
+        Integer[] array = ArithmeticUtils.getRandomIntegerArray(20, 1, 100);
+        System.out.println(JSON.toJSON(array));
         //测试选择排序
         Sort sort = null;
         //选择排序
         sort = new SelectSort();
-        sort.sort(arr, -1);
+        sort.sort(array, -1, Comparator.comparingInt(t -> t));
+        System.out.println(JSON.toJSON(array));
         //冒泡排序
         /*sort = new BubbleSort();
         sort.sort(arr, 1);*/

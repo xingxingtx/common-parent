@@ -1,5 +1,7 @@
 package com.wei.arithmetic.sort;
 
+import java.util.Comparator;
+
 /**
  * @Describe
  * @Author wei.peng
@@ -20,5 +22,12 @@ public interface Sort {
      * @param order -1 降序，其余升序
      */
     public <T extends Comparable> T[] sort(T[] array, int order);
+
+    /**
+     * 排序对象数组
+     * @param array 排序数组
+     * @param order -1 降序，其余升序
+     */
+    public <T> T[] sort(T[] array, int order, Comparator<T> comparator);
 
 }

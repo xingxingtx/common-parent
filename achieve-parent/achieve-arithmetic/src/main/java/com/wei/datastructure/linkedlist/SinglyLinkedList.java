@@ -1,4 +1,4 @@
-package com.wei.arithmetic.linkedlist;
+package com.wei.datastructure.linkedlist;
 
 /**
  * @Describe 单向链表
@@ -36,7 +36,7 @@ public class SinglyLinkedList<E> {
         return true;
     }
 
-    private class Node<E>{
+    static class Node<E>{
           E data;
           Node<E> next;
 
