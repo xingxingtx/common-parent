@@ -1,13 +1,24 @@
 package com.wei.arithmetic.sort.abs;
 
-import com.wei.arithmetic.sort.Sort;
+
+import java.util.Comparator;
 
 /**
  * @Describe
  * @Author wei.peng
  * @Date 2021年05月06日
  */
-public abstract class AbstractSort implements Sort {
+public abstract class AbstractSort<T> implements Sort<T> {
+
+    protected final Comparator<T> comparator;
+
+    protected AbstractSort(Comparator<T> comparator) {
+        this.comparator = comparator;
+    }
+
+    protected AbstractSort() {
+        this.comparator = null;
+    }
 
     /**
      * 数组两个元素值交换
@@ -24,7 +35,6 @@ public abstract class AbstractSort implements Sort {
         arr[j] = arr[i] ^ arr[j];
         arr[i] = arr[i] ^ arr[j];
     }
-
 
     /**
      * 数组两个元素值交换

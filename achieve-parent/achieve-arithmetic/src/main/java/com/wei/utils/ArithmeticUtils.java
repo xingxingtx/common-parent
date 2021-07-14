@@ -3,6 +3,7 @@ package com.wei.utils;
 import com.alibaba.fastjson.JSON;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @Describe
@@ -10,6 +11,8 @@ import java.util.Random;
  * @Date 2021年06月13日
  */
 public class ArithmeticUtils {
+
+    private static ThreadLocalRandom random  = ThreadLocalRandom.current();
 
     /**
      * 判断Object数组内是否全部是同一类型组成的数组
@@ -54,7 +57,7 @@ public class ArithmeticUtils {
         }
         int[] array = new int[length];
         for (int i = 0; i < length; i++) {
-            array[i] = start + new Random().nextInt(end);
+            array[i] = start + random.nextInt(end);
         }
         return array;
     }
@@ -69,14 +72,9 @@ public class ArithmeticUtils {
         }
         Integer[] array = new Integer[length];
         for (int i = 0; i < length; i++) {
-            array[i] = start + new Random().nextInt(end);
+            array[i] = start + random.nextInt(end);
         }
         return array;
-    }
-
-    public static void main(String[] args) {
-        Integer[] array = getRandomIntegerArray(12, 1, 100);
-        System.out.println(JSON.toJSON(array));
     }
 
 }
